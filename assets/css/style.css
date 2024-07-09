@@ -1,4 +1,13 @@
 /* Base Styles */
+:root {
+    --main-background: #400606;
+    --main-font: white;
+    --secondary-font: #F2C46D;
+    --highlight-one: #A62B1F;
+    --highlight-two: #59360A;
+    --highlight-three: #D98A29;
+
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
