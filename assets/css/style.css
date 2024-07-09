@@ -1,4 +1,13 @@
 /* Base Styles */
+:root {
+    --main-background: #400606;
+    --main-font: white;
+    --secondary-font: #F2C46D;
+    --highlight-one: #A62B1F;
+    --highlight-two: #59360A;
+    --highlight-three: #D98A29;
+
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -90,4 +99,54 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+
+/* style.css */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #201399;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.search-btn { 
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+
 }
