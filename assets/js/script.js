@@ -78,18 +78,51 @@ function handleDragEnd(e) {
 function drop(e) {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
-    const newCard = document.createElement('div');
-    newCard.className = 'recipe-item';
-    newCard.setAttribute('draggable', 'true');
-    newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
-    newCard.addEventListener('dragstart', handleDragStart);
-    newCard.addEventListener('dragend', handleDragEnd);
-    favoriteList.appendChild(newCard);
+    const favoriteItems = favoriteList.querySelectorAll('h3');
+    const titles = Array.from(favoriteItems).map(item => item.outerHTML);
+    if (!titles.includes(data)) {
+        const newCard = document.createElement('div');
+        newCard.className = 'recipe-item';
+        newCard.setAttribute('draggable', 'true');
+        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
+        newCard.addEventListener('dragstart', handleDragStart);
+        newCard.addEventListener('dragend', handleDragEnd);
+        favoriteList.appendChild(newCard);
+        saveFavoritesToLocalStorage(); // Save to local storage
+    }
 }
 
 function removeCard(button) {
     button.parentElement.remove();
+    saveFavoritesToLocalStorage(); // Save to local storage
 }
+
+function saveFavoritesToLocalStorage() {
+    const favoriteItems = favoriteList.querySelectorAll('h3');
+    const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
+}
+
+function loadFavoritesFromLocalStorage() {
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+    favorites.forEach(data => {
+        const newCard = document.createElement('div');
+        newCard.className = 'recipe-item';
+        newCard.setAttribute('draggable', 'true');
+        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
+        newCard.addEventListener('dragstart', handleDragStart);
+        newCard.addEventListener('dragend', handleDragEnd);
+        favoriteList.appendChild(newCard);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modalCloseButtons = document.querySelectorAll('.modal-close');
+    modalCloseButtons.forEach(button => {
+        button.addEventListener('click', closeModal);
+    });
+    loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
+});
 
 function openModal(card) {
     const modal = document.getElementById('delete-modal');
@@ -104,13 +137,6 @@ function closeModal() {
     const modal = document.getElementById('delete-modal');
     modal.style.display = 'none';
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const modalCloseButtons = document.querySelectorAll('.modal-close');
-    modalCloseButtons.forEach(button => {
-        button.addEventListener('click', closeModal);
-    });
-});
 
 window.onclick = function(event) {
     const modal = document.getElementById('delete-modal');

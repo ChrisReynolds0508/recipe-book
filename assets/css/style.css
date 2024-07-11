@@ -163,8 +163,8 @@ button:hover {
 }
 
 .recipe-item {
-    background-color: var(--highlight-one);
-    color: var(--main-font);
+    background-color: var(--white);
+    color: var(--highlight-one);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
