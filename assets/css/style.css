@@ -27,6 +27,31 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+header h1 {
+    margin: 0;
+}
+
+header nav {
+    margin-left: auto;
+}
+
+header .home-btn {
+    background-color: var(--highlight-one);
+    color: var(--main-font);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header .home-btn:hover {
+    background-color: var(--highlight-three);
+    transform: scale(1.05);
+}
+
 main {
     flex: 1;
     display: flex;
