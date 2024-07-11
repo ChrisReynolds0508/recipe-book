@@ -27,6 +27,7 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 header h1 {
     margin: 0;
     letter-spacing: 2px;
@@ -72,6 +73,7 @@ h2 {
     margin-bottom: 20px;
     color: var(--secondary-font);
     letter-spacing: 2px;
+
 }
 
 h3 {
@@ -148,6 +150,7 @@ button:hover {
 
 #results {
     background-color: var(--main-font);
+
     color: var(--main-background);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -248,4 +251,5 @@ footer {
 .modal-footer .btn:hover {
     background-color: var(--highlight-two);
     transform: scale(1.05);
+  
 }
