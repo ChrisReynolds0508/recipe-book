@@ -1,87 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Search Engine</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
     <header>
         <h1>Recipe Search Engine</h1>
-        <nav>
-            <a href="index.html" class="home-btn">Home</a>
-        </nav>
     </header>
-
     <main>
         <section id="search-forms">
             <h2>Search Recipes</h2>
-
-            <!-- Search by Cuisine Origin -->
             <div class="search-form">
-                <h3>Search by Cuisine Origin</h3>
-                <form id="search-cuisine">
+                <h3>Search by Criteria</h3>
+                <form id="search-form">
                     <label for="cuisine">Select Cuisine:</label>
                     <select id="cuisine" name="cuisine">
+                        <option value="">Any</option>
                         <option value="italian">Italian</option>
                         <option value="chinese">Chinese</option>
                         <option value="mexican">Mexican</option>
                         <option value="indian">Indian</option>
                         <option value="french">French</option>
-                        <!-- Add more cuisines as needed -->
                     </select>
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-
-            <!-- Search by Meal Type -->
-            <div class="search-form">
-                <h3>Search by Meal Type</h3>
-                <form id="search-meal-type">
+                    
                     <label for="meal-type">Select Meal Type:</label>
                     <select id="meal-type" name="meal-type">
+                        <option value="">Any</option>
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="snack">Snack</option>
                         <option value="dessert">Dessert</option>
-                        <!-- Add more meal types as needed -->
                     </select>
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-
-            <!-- Search by Ingredient Type -->
-            <div class="search-form">
-                <h3>Search by Ingredient Type</h3>
-                <form id="search-ingredient-type">
                     <label for="ingredient-type">Select Ingredient Type:</label>
                     <select id="ingredient-type" name="ingredient-type">
+                        <option value="">Any</option>
                         <option value="meat">Meat</option>
                         <option value="vegetables">Vegetables</option>
                         <option value="fruits">Fruits</option>
                         <option value="grains">Grains</option>
                         <option value="dairy">Dairy</option>
-                        <!-- Add more ingredient types as needed -->
                     </select>
                     <button type="submit">Search</button>
                 </form>
             </div>
         </section>
-
-        <!-- Favorites Section -->
-        <section id="favorites">
-            <h2>Favorites</h2>
-            <div id="favorite-list">
-                <!-- Favorite recipes will be displayed here -->
-            </div>
-        </section>
-
-        <!-- Search Results Section -->
         <section id="results">
             <h2>Search Results</h2>
             <div id="recipe-list">
@@ -89,12 +55,10 @@
             </div>
         </section>
     </main>
-
     <footer>
         <p>&copy; 2024 Recipe Search Engine</p>
     </footer>
-
-    <script src="./assets/js/script.js"></script>
+   
+    <script src="assets/js/script.js"></script>
 </body>
-
 </html>
