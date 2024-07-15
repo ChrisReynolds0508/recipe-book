@@ -151,3 +151,5 @@ window.onclick = function(event) {
         modal.style.display = 'none';
     }
 }; // This function is used to close the modal when the user clicks outside the modal
+
+
