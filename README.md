@@ -11,11 +11,11 @@ This project is a real-world front-end application developed as a group assignme
 
 ## Technologies Used
 
-- CSS Framework: Tailwind CSS
-- Server-side APIs: Edamam, The cocktail DB
-- Client-side Storage: LocalStorage
-- Version Control: Git and GitHub
-- Deployment: GitHub Pages
+- **CSS Framework:** Tailwind CSS
+- **Server-side APIs:** Edamam, The cocktail DB
+-**Client-side Storage:** LocalStorage
+- **Version Control:** Git and GitHub
+- **Deployment:** GitHub Pages
 
 ## Features
 
