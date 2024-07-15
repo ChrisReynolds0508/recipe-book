@@ -30,6 +30,7 @@ This project is a real-world front-end application developed as a group assignme
 
 1. **Adding Recipes**: Users can add new recipes by clicking the 'Add Recipe' button and filling in the details in the modal form. <br>
 2. **Editing Recipes**: Users can edit existing recipes by selecting the 'Edit' option on a recipe card.<br>
-3. **Add to favourite Recipes**: Users can add their favorite recipes to the favorite side bar. <br>
+3. **Add to favorite Recipes**: Users can add their favorite recipes to the favorite sidebar. <br>
+4. **Deleting Recipes**: Users can delete their  recipes from the favorite sidebar. <br>
 
 
