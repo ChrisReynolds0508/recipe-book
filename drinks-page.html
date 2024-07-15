@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .drink-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .drink-card img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drink Search</h1>
+        <select id="drinkType">
+            <option value="Ordinary_Drink">Ordinary Drink</option>
+            <option value="Cocktail">Cocktail</option>
+            <option value="Milk_Float_Shake">Milk / Float / Shake</option>
+            <option value="Other/Unknown">Other/Unknown</option>
+            <option value="Cocoa">Cocoa</option>
+            <option value="Shot">Shot</option>
+            <option value="Coffee_Tea">Coffee / Tea</option>
+            <option value="Homemade_Liqueur">Homemade Liqueur</option>
+            <option value="Punch_Party_Drink">Punch / Party Drink</option>
+            <option value="Beer">Beer</option>
+            <option value="Soft_Drink_Soda">Soft Drink / Soda</option>
+        </select>
+        <button id="searchButton">Search</button>
+        <div id="results"></div>
+    </div>
+
+    <script src="./assets/js/drinks.js"></script>
+</body>
+</html>
