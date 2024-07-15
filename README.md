@@ -13,7 +13,7 @@ This project is a real-world front-end application developed as a group assignme
 
 - **CSS Framework:** Tailwind CSS <br>
 - **Server-side APIs:** Edamam, The cocktail DB  <br>
--**Client-side Storage:** LocalStorage  <br>
+- **Client-side Storage:** LocalStorage  <br>
 - **Version Control:** Git and GitHub  <br>
 - **Deployment:** GitHub Pages
 
