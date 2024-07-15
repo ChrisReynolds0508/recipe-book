@@ -45,6 +45,7 @@ function searchRecipes(query) {
         recipeList.innerHTML = '<p>Failed to fetch recipes. Please try again later.</p>';
     });
 }
+
 function displayRecipes(recipes) {
     const recipeList = document.getElementById('recipe-list');
     recipeList.innerHTML = ''; // Clear previous results
@@ -55,12 +56,15 @@ function displayRecipes(recipes) {
     recipes.forEach(recipe => {
         const recipeItem = document.createElement('div');
         recipeItem.className = 'recipe-item';
+        recipeItem.setAttribute('draggable', 'true');
         recipeItem.innerHTML = `
             <h3>${recipe.recipe.label}</h3>
             <p>${recipe.recipe.source}</p>
             <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}" />
             <p>Ingredients: ${recipe.recipe.ingredientLines.join(', ')}</p>
         `;
+        recipeItem.addEventListener('dragstart', handleDragStart);
+        recipeItem.addEventListener('dragend', handleDragEnd);
         recipeList.appendChild(recipeItem);
     });
 }

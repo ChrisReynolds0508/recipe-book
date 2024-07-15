@@ -8,25 +8,24 @@
     --highlight-three: #D98A29;
 }
 
-body, html {
+body, html { 
     height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: var(--main-font);
-    color: var(--main-background);
+    color: var(--highlight-one);
     display: flex;
     flex-direction: column;
-}
+} /* body styling, added font background color */ 
 
 header {
     background-color: var(--highlight-three);
-    color: var(--main-font);
+    color: var(--highlight-one);
     padding: 20px;
     text-align: center;
     font-weight: 500;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 
 header h1 {
     margin: 0;
@@ -71,16 +70,21 @@ h1 {
 h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: var(--secondary-font);
+    color: var(--main-background);
     letter-spacing: 2px;
-
 }
 
 h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: var (--secondary-font);
+    color: var(--highlight-one);
     letter-spacing: 1.5px;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--highlight-one);
 }
 
 .content {
@@ -150,7 +154,6 @@ button:hover {
 
 #results {
     background-color: var(--main-font);
-
     color: var(--main-background);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -181,14 +184,14 @@ button:hover {
     right: 10px;
     background: none;
     border: none;
-    color: var(--main-font);
+    color: var(--secondary-font);
     font-size: 1rem;
     cursor: pointer;
 }
 
 footer {
     background-color: var(--highlight-three);
-    color: var(--main-font);
+    color: var(--highlight-one);
     text-align: center;
     padding: 20px;
     font-size: 1rem;
@@ -251,5 +254,4 @@ footer {
 .modal-footer .btn:hover {
     background-color: var(--highlight-two);
     transform: scale(1.05);
-  
 }
