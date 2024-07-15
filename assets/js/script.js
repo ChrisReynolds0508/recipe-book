@@ -1,27 +1,33 @@
-const apiKey = 'mdHdAxFSpW4kEbLGGYEfAg==IssRYpNGzW4852n5'; // Replace with your actual API key
+const apiKey = '85d9c434cfdee37725270068dabbb404'; 
+const accessPoint = 'https://api.edamam.com/api/recipes/v2';
+const appID = 'f1bceae0';
+const type = 'public';
+
 document.getElementById('search-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const cuisine = document.getElementById('cuisine').value;
     const mealType = document.getElementById('meal-type').value;
-    const ingredientType = document.getElementById('ingredient-type').value;
+    const dishType = document.getElementById('dish-type').value;
     let query = '';
     if (cuisine) {
-        query += `cuisine=${cuisine}&`;
+        query += `&cuisineType=${cuisine}`;
     }
     if (mealType) {
-        query += `mealType=${mealType}&`;
+        query += `&mealType=${mealType}`;
     }
-    if (ingredientType) {
-        query += `ingredientType=${ingredientType}`;
+    if (dishType) {
+        query += `&dishType=${dishType}`;
     }
     searchRecipes(query);
 });
 
 function searchRecipes(query) {
-    fetch(`https://api.api-ninjas.com/v1/recipe?${query}`, {
+    const url = `${accessPoint}?app_id=${appID}&app_key=${apiKey}&type=${type}${query}`;
+
+    fetch(url, {
         method: 'GET',
         headers: {
-            'X-Api-Key': apiKey
+            'Content-Type': 'application/json'
         }
     })
     .then(response => {
@@ -31,7 +37,7 @@ function searchRecipes(query) {
         return response.json();
     })
     .then(data => {
-        displayRecipes(data);
+        displayRecipes(data.hits); // Assuming 'hits' contains the recipe data
     })
     .catch(error => {
         console.error('Error fetching recipes:', error);
@@ -39,7 +45,6 @@ function searchRecipes(query) {
         recipeList.innerHTML = '<p>Failed to fetch recipes. Please try again later.</p>';
     });
 }
-
 function displayRecipes(recipes) {
     const recipeList = document.getElementById('recipe-list');
     recipeList.innerHTML = ''; // Clear previous results
@@ -50,13 +55,12 @@ function displayRecipes(recipes) {
     recipes.forEach(recipe => {
         const recipeItem = document.createElement('div');
         recipeItem.className = 'recipe-item';
-        recipeItem.setAttribute('draggable', 'true');
         recipeItem.innerHTML = `
-            <h3>${recipe.title}</h3>
-            <p>${recipe.instructions}</p>
+            <h3>${recipe.recipe.label}</h3>
+            <p>${recipe.recipe.source}</p>
+            <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}" />
+            <p>Ingredients: ${recipe.recipe.ingredientLines.join(', ')}</p>
         `;
-        recipeItem.addEventListener('dragstart', handleDragStart);
-        recipeItem.addEventListener('dragend', handleDragEnd);
         recipeList.appendChild(recipeItem);
     });
 }
