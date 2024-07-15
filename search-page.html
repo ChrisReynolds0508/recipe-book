@@ -6,14 +6,14 @@
     <title>Recipe Search Engine</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!--Tailwind CSS Stylsheet-->
 </head>
 <body>
     <header class="bg-highlight-three text-highlight-one p-5 text-center shadow-md flex justify-between items-center">
         <h1>Recipe Search Engine</h1>
         <nav>
-            <a href="index.html" class="home-btn bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Home</a>
-        </nav>
+            <a href="index.html" class="home-btn bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Home</a> 
+        </nav> <!--Home button with Tailwind styling-->
     </header>
     <main class="flex flex-grow p-10 space-x-5">
         <section id="search-forms" class="bg-main-font text-highlight-one p-5 rounded-lg shadow-md" style="flex-basis: 25%;">
@@ -24,11 +24,24 @@
                         <label for="cuisine">Select Cuisine:</label>
                         <select id="cuisine" name="cuisine" class="block w-full mt-1">
                             <option value="">Any</option>
-                            <option value="italian">Italian</option>
+                            <option value="american">American</option>
+                            <option value="asian">Asian</option>
+                            <option value="british">British</option>
+                            <option value="caribbean">Caribbean</option>
+                            <option value="central europe">Central Europe</option>
                             <option value="chinese">Chinese</option>
-                            <option value="mexican">Mexican</option>
-                            <option value="indian">Indian</option>
+                            <option value="eastern europe">Eastern Europe</option>
                             <option value="french">French</option>
+                            <option value="indian">Indian</option>
+                            <option value="italian">Italian</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="kosher">Kosher</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="middle eastern">Middle Eastern</option>
+                            <option value="nordic">Nordic</option>
+                            <option value="south american">South American</option>
+                            <option value="south east asian">South East Asian</option>
                         </select>
                     </div>
                     <div>
@@ -46,14 +59,25 @@
                         <label for="dish-type">Select Dish Type:</label>
                         <select id="dish-type" name="dish-type" class="block w-full mt-1">
                             <option value="">Any</option>
+                            <option value="biscuits and cookies">Biscuits and cookies</option>
                             <option value="bread">Bread</option>
-                            <option value="soup">Soup</option>
-                            <option value="sandwiches">Sandwiches</option>
+                            <option value="cereals">Cereals</option>
+                            <option value="condiments and sauces">Condiments and sauces</option>
+                            <option value="desserts">Desserts</option>
+                            <option value="drinks">Drinks</option>
+                            <option value="main course">Main course</option>
+                            <option value="pancake">Pancake</option>
+                            <option value="preps">Preps</option>
+                            <option value="preserve">Preserve</option>
                             <option value="salad">Salad</option>
-                            <option value="condiments">Condiments and Sauces</option>
+                            <option value="sandwiches">Sandwiches</option>
+                            <option value="side dish">Side dish</option>
+                            <option value="soup">Soup</option>
+                            <option value="starter">Starter</option>
+                            <option value="sweets">Sweets</option>
                         </select>
                     </div>
-                    <button type="submit" class="bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Search</button>
+                    <button type="submit" class="bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Search</button> <!-- Submit button -->
                 </form>
             </div>
         </section>
@@ -67,7 +91,7 @@
 
         <aside id="favorites" class="bg-main-font text-highlight-one p-5 rounded-lg shadow-md" style="flex-basis: 25%;">
             <h4 class="text-highlight-one mb-4">Favorite Recipes</h4>
-            <div id="favorite-list" class="favorite-list space-y-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="favorite-list" class="favorite-list space-y-4" ondrop="drop(event)" ondragover="allowDrop(event)"> <!-- events used to handle drag and drop function -->
                 <!-- Favorite recipes will be displayed here -->
             </div>
         </aside>
