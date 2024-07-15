@@ -1,5 +1,7 @@
 ## Project Group 8
 
+## Group members:
+
 # Project Name
 Recipe Search Engine
 
