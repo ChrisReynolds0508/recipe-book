@@ -60,7 +60,7 @@ function displayRecipes(recipes) { // Function used to display recipes
         recipeItem.innerHTML = ` 
             <h3>${recipe.recipe.label}</h3>
             <p>${recipe.recipe.source}</p>
-            <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}" />
+            <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}" draggable="false" />
             <p>Ingredients: ${recipe.recipe.ingredientLines.join(', ')}</p>
         `; 
         recipeItem.addEventListener('dragstart', handleDragStart);
