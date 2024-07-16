@@ -304,3 +304,34 @@ footer {
         font-size: 1rem;
     }
 }
+
+.favorites-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    background-color: var(--highlight-three);
+}
+
+.favorite-item {
+    background-color: var(--main-font);
+    color: var(--highlight-one);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 10px;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.favorite-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.favorite-item h3 {
+    font-size: 1rem;
+    margin: 5px 0 0 0;
+}
