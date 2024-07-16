@@ -101,13 +101,32 @@ function drop(e) {
 } // This function is used to add a recipe to the favorite list
 
 function removeCard(button) {
-    const confirmDelete = confirm('Are you sure you want to delete this recipe from your favorites?');
-    if (confirmDelete) {
-        button.parentElement.remove();
-        saveFavoritesToLocalStorage(); // Save to local storage
-    }
+    const recipeItem = button.parentElement;
+    openModal(recipeItem);
 } // This function is used to remove a recipe from the favorite list with confirmation
 
+
+function openModal(recipeItem) { 
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'block';
+    document.getElementById('confirm-delete').onclick = function() {
+        recipeItem.remove();
+        saveFavoritesToLocalStorage(); // Save to local storage
+        closeModal();
+    }; 
+} // This function is used to open the modal when the delete button is clicked
+
+function closeModal() {
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'none';
+} // This function is used to close the modal when the close button is clicked
+
+window.onclick = function(event) {
+    const modal = document.getElementById('delete-modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
 function saveFavoritesToLocalStorage() {
     const favoriteItems = favoriteList.querySelectorAll('h3');
     const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
@@ -129,27 +148,6 @@ function loadFavoritesFromLocalStorage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadFavoritesFromLocalStorage(); 
-}); // This function is used to load the favorite recipes from local storage when the page loads
-
-function openModal(card) { 
-    const modal = document.getElementById('delete-modal');
-    modal.style.display = 'block';
-    document.getElementById('confirm-delete').onclick = function() {
-        card.remove();
-        closeModal();
-    }; 
-} // This function is used to open the modal when the delete button is clicked
-
-function closeModal() {
-    const modal = document.getElementById('delete-modal');
-    modal.style.display = 'none';
-} // This function is used to close the modal when the close button is clicked
-
-window.onclick = function(event) {
-    const modal = document.getElementById('delete-modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}; // This function is used to close the modal when the user clicks outside the modal
+}); // This function is used to close the modal when the user clicks outside the modal
 
 
