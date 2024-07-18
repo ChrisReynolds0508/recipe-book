@@ -65,7 +65,7 @@
                             <option value="cereals">Cereals</option>
                             <option value="condiments and sauces">Condiments and sauces</option>
                             <option value="desserts">Desserts</option>
-                            <option value="drinks">Drinks</option>
+                            
                             <option value="main course">Main course</option>
                             <option value="pancake">Pancake</option>
                             <option value="preps">Preps</option>
@@ -99,19 +99,21 @@
     </main>
 
     <footer class="bg-highlight-three text-highlight-one text-center py-5">
-        <p>&copy; 2024 Recipe Search Engine</p>
+        <p>&copy; 2024 RecipeSavour</p>
     </footer>
 
     <div id="delete-modal" class="modal fixed z-10 inset-0 overflow-y-auto hidden">
         <div class="modal-content bg-main-font p-5 rounded-lg shadow-lg text-highlight-one m-auto mt-20 w-1/3">
             <h4 class="mb-4">Delete Recipe</h4>
-            <p>Are you sure you want to delete this recipe from your favorites?</p>
+            <p>Are you sure you want to delete this recipe?</p>
             <div class="modal-footer flex justify-end space-x-4 mt-4">
-                <button id="confirm-delete" class="btn bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Delete</button>
-                <button class="btn modal-close bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Cancel</button>
+                <button id="confirm-delete" class="btn bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300">Yes</button>
+                <button class="btn modal-close bg-highlight-one text-main-font py-2 px-4 rounded-full hover:bg-highlight-two transition duration-300" onclick="closeModal()">No</button>
             </div>
         </div>
     </div>
+    
+    
 
     <script src="assets/js/script.js"></script>
 </body>

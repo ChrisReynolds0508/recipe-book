@@ -71,18 +71,41 @@ function drop(e) {
     }
 }
 
-function confirmRemoveCard(button) {
-    if (confirm('Are you sure you want to delete this drink from your favorites?')) {
-        button.parentElement.remove();
-        saveFavoritesToLocalStorage(); // Save to local storage
-    }
-}
 
+// This function is used to remove a recipe from the favorite list with confirmation
+function confirmRemoveCard(button) {
+    const recipeItem = button.parentElement;
+    openModal(recipeItem);
+} // This function is used to remove a recipe from the favorite list with confirmation
+
+
+function openModal(recipeItem) { 
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'block';
+    document.getElementById('confirm-delete').onclick = function() {
+        recipeItem.remove();
+        saveFavoritesToLocalStorage(); // Save to local storage
+        closeModal();
+    }; 
+} // This function is used to open the modal when the delete button is clicked
+
+function closeModal() {
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'none';
+} // This function is used to close the modal when the close button is clicked
+
+window.onclick = function(event) {
+    const modal = document.getElementById('delete-modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
 function saveFavoritesToLocalStorage() {
     const favoriteItems = favoriteList.querySelectorAll('h3');
     const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
     localStorage.setItem('favoriteDrinks', JSON.stringify(favorites));
 }
+
 
 function loadFavoritesFromLocalStorage() {
     const favorites = JSON.parse(localStorage.getItem('favoriteDrinks')) || [];
@@ -99,4 +122,5 @@ function loadFavoritesFromLocalStorage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
+
 });

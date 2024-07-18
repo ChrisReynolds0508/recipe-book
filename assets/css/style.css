@@ -29,6 +29,8 @@ header {
 
 header h1 {
     margin: 0;
+    font-size: 23px;
+    text-align: center;
     letter-spacing: 2px;
 }
 
@@ -84,7 +86,7 @@ h3 {
 }
 
 h4 {
-    font-size: 1.2rem;
+    font-size: 15px;
     margin-bottom: 10px;
     color: var(--highlight-one);
 }
@@ -156,6 +158,7 @@ button:hover {
 
 #results {
     background-color: var(--main-font);
+    font-size: 15px;
     color: var(--main-background);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -304,7 +307,46 @@ footer {
         font-size: 1rem;
     }
 }
+/* Mobile Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem; 
+    }
 
+    main {
+        flex-direction: column; 
+        padding: 1rem; 
+    }
+
+    .search-form, #results, #favorites {
+        flex: 1 1 100%; 
+        margin: 0.5rem 0; 
+    }
+
+    .search-btn {
+        padding: 10px 20px; 
+        font-size: 1rem;
+    }
+
+    footer {
+        font-size: 0.9rem; 
+    }
+}
+
+@media (max-width: 640px) {
+    header h1 {
+        font-size: 1.8rem; 
+    }
+
+    h2 {
+        font-size: 1.5rem; 
+    }
+
+    .search-btn {
+        padding: 10px 20px; 
+        font-size: 1rem;
+    }
+}
 .favorites-bar {
     display: flex;
     overflow-x: auto;
