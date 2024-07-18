@@ -1,19 +1,24 @@
+document.getElementById('search-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const drinkName = document.getElementById('drinkName').value.trim();
+    if (drinkName === "") {
+        alert("Please enter a drink name.");
+        return;
+    }
+    searchDrinks(drinkName);
+});
 
-document.getElementById('searchButton').addEventListener('click', searchDrinks);
-
-function searchDrinks() {
-    const drinkType = document.getElementById('drinkType').value;
-    const resultsDiv = document.getElementById('results');
+function searchDrinks(drinkName) {
+    const resultsDiv = document.getElementById('recipe-list');
     resultsDiv.innerHTML = '';
 
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
         .then(response => response.json())
         .then(data => {
             if (data.drinks) {
                 data.drinks.forEach(drink => {
                     const drinkCard = document.createElement('div');
                     drinkCard.className = 'recipe-item';
-                    drinkCard.setAttribute('draggable', 'true');
 
                     const drinkName = document.createElement('h3');
                     drinkName.textContent = drink.strDrink;
@@ -26,6 +31,7 @@ function searchDrinks() {
                     drinkCard.appendChild(drinkName);
                     drinkCard.appendChild(drinkImage);
 
+                    drinkCard.setAttribute('draggable', 'true');
                     drinkCard.addEventListener('dragstart', handleDragStart);
                     drinkCard.addEventListener('dragend', handleDragEnd);
 
@@ -64,7 +70,7 @@ function drop(e) {
         const newCard = document.createElement('div');
         newCard.className = 'recipe-item';
         newCard.setAttribute('draggable', 'true');
-        newCard.innerHTML = data + '<button class="close-btn" onclick="confirmRemoveCard(this)">x</button>';
+        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
         newCard.addEventListener('dragstart', handleDragStart);
         newCard.addEventListener('dragend', handleDragEnd);
         favoriteList.appendChild(newCard);
@@ -72,41 +78,19 @@ function drop(e) {
     }
 }
 
-
-// This function is used to remove a recipe from the favorite list with confirmation
-function confirmRemoveCard(button) {
-    const recipeItem = button.parentElement;
-    openModal(recipeItem);
-} // This function is used to remove a recipe from the favorite list with confirmation
-
-
-function openModal(recipeItem) { 
-    const modal = document.getElementById('delete-modal');
-    modal.style.display = 'block';
-    document.getElementById('confirm-delete').onclick = function() {
-        recipeItem.remove();
+function removeCard(button) {
+    const confirmDelete = confirm('Are you sure you want to delete this drink from your favorites?');
+    if (confirmDelete) {
+        button.parentElement.remove();
         saveFavoritesToLocalStorage(); // Save to local storage
-        closeModal();
-    }; 
-} // This function is used to open the modal when the delete button is clicked
-
-function closeModal() {
-    const modal = document.getElementById('delete-modal');
-    modal.style.display = 'none';
-} // This function is used to close the modal when the close button is clicked
-
-window.onclick = function(event) {
-    const modal = document.getElementById('delete-modal');
-    if (event.target === modal) {
-        closeModal();
     }
-};
+}
+
 function saveFavoritesToLocalStorage() {
     const favoriteItems = favoriteList.querySelectorAll('h3');
     const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
     localStorage.setItem('favoriteDrinks', JSON.stringify(favorites));
 }
-
 
 function loadFavoritesFromLocalStorage() {
     const favorites = JSON.parse(localStorage.getItem('favoriteDrinks')) || [];
@@ -114,7 +98,7 @@ function loadFavoritesFromLocalStorage() {
         const newCard = document.createElement('div');
         newCard.className = 'recipe-item';
         newCard.setAttribute('draggable', 'true');
-        newCard.innerHTML = data + '<button class="close-btn" onclick="confirmRemoveCard(this)">x</button>';
+        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
         newCard.addEventListener('dragstart', handleDragStart);
         newCard.addEventListener('dragend', handleDragEnd);
         favoriteList.appendChild(newCard);
@@ -123,5 +107,4 @@ function loadFavoritesFromLocalStorage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
-
 });
