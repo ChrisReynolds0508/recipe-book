@@ -1,3 +1,4 @@
+
 document.getElementById('search-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const drinkName = document.getElementById('drinkName').value.trim();
@@ -20,16 +21,32 @@ function searchDrinks(drinkName) {
                     const drinkCard = document.createElement('div');
                     drinkCard.className = 'recipe-item';
 
-                    const drinkName = document.createElement('h3');
-                    drinkName.textContent = drink.strDrink;
+                    const drinkNameElement = document.createElement('h3');
+                    drinkNameElement.textContent = drink.strDrink;
 
                     const drinkImage = document.createElement('img');
                     drinkImage.src = drink.strDrinkThumb;
                     drinkImage.alt = drink.strDrink;
                     drinkImage.draggable = false;
 
-                    drinkCard.appendChild(drinkName);
+                    const ingredientsList = document.createElement('ul');
+                    ingredientsList.className = 'ingredients-list';
+                    // Loop through ingredients and measures (up to 15 ingredients)
+                    for (let i = 1; i <= 15; i++) {
+                        const ingredient = drink[`strIngredient${i}`];
+                        const measure = drink[`strMeasure${i}`];
+                        if (ingredient && ingredient.trim() !== '') {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `${ingredient} - ${measure}`;
+                            ingredientsList.appendChild(listItem);
+                        } else {
+                            break;
+                        }
+                    }
+
+                    drinkCard.appendChild(drinkNameElement);
                     drinkCard.appendChild(drinkImage);
+                    drinkCard.appendChild(ingredientsList);
 
                     drinkCard.setAttribute('draggable', 'true');
                     drinkCard.addEventListener('dragstart', handleDragStart);
@@ -81,28 +98,28 @@ function drop(e) {
 function confirmRemoveCard(button) {
     const recipeItem = button.parentElement;
     openModal(recipeItem);
-} // This function is used to remove a recipe from the favorite list with confirmation
+}
 
-function openModal(recipeItem) { 
+function openModal(recipeItem) {
     const modal = document.getElementById('delete-modal');
     modal.style.display = 'block';
     document.getElementById('confirm-delete').onclick = function() {
         recipeItem.remove();
         saveFavoritesToLocalStorage(); // Save to local storage
         closeModal();
-    }; 
-} // This function is used to open the modal when the delete button is clicked
+    };
+}
 
 function closeModal() {
     const modal = document.getElementById('delete-modal');
     modal.style.display = 'none';
-} // This function is used to close the modal when the close button is clicked
+}
 
 function saveFavoritesToLocalStorage() {
     const favoriteItems = favoriteList.querySelectorAll('h3');
     const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
     localStorage.setItem('favoriteDrinks', JSON.stringify(favorites));
-} // This function is used to save the favorite drinks to local storage
+}
 
 function loadFavoritesFromLocalStorage() {
     const favorites = JSON.parse(localStorage.getItem('favoriteDrinks')) || [];
@@ -115,8 +132,8 @@ function loadFavoritesFromLocalStorage() {
         newCard.addEventListener('dragend', handleDragEnd);
         favoriteList.appendChild(newCard);
     });
-} // This function is used to load the favorite drinks from local storage
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
+    loadFavoritesFromLocalStorage();
 });
