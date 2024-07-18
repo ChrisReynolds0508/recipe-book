@@ -21,6 +21,7 @@ function searchDrinks() {
                     const drinkImage = document.createElement('img');
                     drinkImage.src = drink.strDrinkThumb;
                     drinkImage.alt = drink.strDrink;
+                    drinkImage.draggable = false;
 
                     drinkCard.appendChild(drinkName);
                     drinkCard.appendChild(drinkImage);
