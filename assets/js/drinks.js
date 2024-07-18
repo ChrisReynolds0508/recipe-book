@@ -69,7 +69,7 @@ function drop(e) {
         const newCard = document.createElement('div');
         newCard.className = 'recipe-item';
         newCard.setAttribute('draggable', 'true');
-        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
+        newCard.innerHTML = data + '<button class="close-btn" onclick="confirmRemoveCard(this)">x</button>';
         newCard.addEventListener('dragstart', handleDragStart);
         newCard.addEventListener('dragend', handleDragEnd);
         favoriteList.appendChild(newCard);
@@ -77,19 +77,31 @@ function drop(e) {
     }
 }
 
-function removeCard(button) {
-    const confirmDelete = confirm('Are you sure you want to delete this drink from your favorites?');
-    if (confirmDelete) {
-        button.parentElement.remove();
+function confirmRemoveCard(button) {
+    const recipeItem = button.parentElement;
+    openModal(recipeItem);
+} // This function is used to remove a recipe from the favorite list with confirmation
+
+function openModal(recipeItem) { 
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'block';
+    document.getElementById('confirm-delete').onclick = function() {
+        recipeItem.remove();
         saveFavoritesToLocalStorage(); // Save to local storage
-    }
-}
+        closeModal();
+    }; 
+} // This function is used to open the modal when the delete button is clicked
+
+function closeModal() {
+    const modal = document.getElementById('delete-modal');
+    modal.style.display = 'none';
+} // This function is used to close the modal when the close button is clicked
 
 function saveFavoritesToLocalStorage() {
     const favoriteItems = favoriteList.querySelectorAll('h3');
     const favorites = Array.from(favoriteItems).map(item => item.outerHTML);
     localStorage.setItem('favoriteDrinks', JSON.stringify(favorites));
-}
+} // This function is used to save the favorite drinks to local storage
 
 function loadFavoritesFromLocalStorage() {
     const favorites = JSON.parse(localStorage.getItem('favoriteDrinks')) || [];
@@ -97,12 +109,12 @@ function loadFavoritesFromLocalStorage() {
         const newCard = document.createElement('div');
         newCard.className = 'recipe-item';
         newCard.setAttribute('draggable', 'true');
-        newCard.innerHTML = data + '<button class="close-btn" onclick="removeCard(this)">x</button>';
+        newCard.innerHTML = data + '<button class="close-btn" onclick="confirmRemoveCard(this)">x</button>';
         newCard.addEventListener('dragstart', handleDragStart);
         newCard.addEventListener('dragend', handleDragEnd);
         favoriteList.appendChild(newCard);
     });
-}
+} // This function is used to load the favorite drinks from local storage
 
 document.addEventListener('DOMContentLoaded', function() {
     loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
