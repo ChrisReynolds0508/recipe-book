@@ -1,3 +1,4 @@
+
 document.getElementById('searchButton').addEventListener('click', searchDrinks);
 
 function searchDrinks() {
@@ -70,6 +71,7 @@ function drop(e) {
     }
 }
 
+
 // This function is used to remove a recipe from the favorite list with confirmation
 function confirmRemoveCard(button) {
     const recipeItem = button.parentElement;
@@ -104,6 +106,7 @@ function saveFavoritesToLocalStorage() {
     localStorage.setItem('favoriteDrinks', JSON.stringify(favorites));
 }
 
+
 function loadFavoritesFromLocalStorage() {
     const favorites = JSON.parse(localStorage.getItem('favoriteDrinks')) || [];
     favorites.forEach(data => {
@@ -119,5 +122,5 @@ function loadFavoritesFromLocalStorage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadFavoritesFromLocalStorage(); // Load favorites from local storage when the page loads
-});
 
+});
