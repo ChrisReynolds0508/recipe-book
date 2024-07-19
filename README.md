@@ -29,10 +29,9 @@ This project is a real-world front-end application developed as a group assignme
 
 ## Usage
 
-1. **Adding Recipes**: Users can add new recipes by clicking the 'Add Recipe' button and filling in the details in the modal form. <br>
-2. **Editing Recipes**: Users can edit existing recipes by selecting the 'Edit' option on a recipe card.<br>
-3. **Add to favorite Recipes**: Users can add their favorite recipes to the favorite sidebar. <br>
-4. **Deleting Recipes**: Users can delete their  recipes from the favorite sidebar. <br>
+1. **Adding Recipes**: Users can add new recipes by either selecting options from the dropdown menus for the food page or enter in their favourite cocktail for the drinks page <br>
+2. **Add to favorite Recipes**: Users can add their favorite recipes to the favorite sidebar by dragging the recipe over the top of it. <br>
+3. **Deleting Recipes**: Users can delete their  recipes from the favorite sidebar. <br>
 
 ## Screenshots 
 ![Screenshot of landing page](./assets/img/landing.png)
