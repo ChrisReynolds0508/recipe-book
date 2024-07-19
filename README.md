@@ -39,6 +39,8 @@ This project is a real-world front-end application developed as a group assignme
 ![Screenshot of modal](./assets/img/modal.png)
 ![Screenshot of drinks page](./assets/img/drinks.png)
 
+## URL
+https://chrisreynolds0508.github.io/recipe-book/
 
 ## Licence 
 
